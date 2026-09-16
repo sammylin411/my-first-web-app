@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Counter App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .counter-card {
+      background: #ffffff;
+      padding: 2.5rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 320px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .count-display {
+      font-size: 4.5rem;
+      font-weight: bold;
+      color: #2d3748;
+      margin-bottom: 1.5rem;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .btn-decrease {
+      background-color: #e53e3e;
+    }
+    .btn-decrease:hover {
+      background-color: #c53030;
+    }
+
+    .btn-increase {
+      background-color: #38a169;
+    }
+    .btn-increase:hover {
+      background-color: #2f855a;
+    }
+
+    .btn-reset {
+      width: 100%;
+      background-color: #718096;
+      font-size: 1rem;
+    }
+    .btn-reset:hover {
+      background-color: #4a5568;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter-card">
+    <h1>Counter App</h1>
+    <div id="count" class="count-display">0</div>
+    
+    <div class="button-group">
+      <button class="btn-decrease" onclick="decrement()">-</button>
+      <button class="btn-increase" onclick="increment()">+</button>
+    </div>
+    
+    <button class="btn-reset" onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    let count = 0;
+    const countDisplay = document.getElementById('count');
+
+    function updateDisplay() {
+      countDisplay.textContent = count;
+      
+      // Optional: Add color feedback for negative, positive, or zero values
+      if (count > 0) {
+        countDisplay.style.color = '#38a169';
+      } else if (count < 0) {
+        countDisplay.style.color = '#e53e3e';
+      } else {
+        countDisplay.style.color = '#2d3748';
+      }
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+
+    function decrement() {
+      count--;
+      updateDisplay();
+    }
+
+    function reset() {
+      count = 0;
+      updateDisplay();
+    }
+  </script>
+
+</body>
+</html>
